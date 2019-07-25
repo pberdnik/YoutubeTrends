@@ -1,12 +1,14 @@
 package io.github.pberdnik.youtubetrends.network
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.github.pberdnik.youtubetrends.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -19,7 +21,7 @@ interface YoutubeDataApiService {
         @Query("chart") chart: String = "mostPopular",
         @Query("maxResults") maxResults: Int = 25,
         @Query("regionCode") regionCode: String = "RU"
-    ): String
+    ): Videos
 }
 
 object YoutubeDataApi {
@@ -50,8 +52,12 @@ private val okHttpClient = OkHttpClient().newBuilder()
     .addInterceptor(apiKeyInterceptor)
     .build()
 
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+
 private val retrofit = Retrofit.Builder()
     .client(okHttpClient)
-    .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()

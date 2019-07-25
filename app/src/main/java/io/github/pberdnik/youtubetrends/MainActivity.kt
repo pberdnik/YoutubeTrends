@@ -15,7 +15,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         CoroutineScope(Dispatchers.Main).launch {
-            tvMain.text = YoutubeDataApi.retrofitService.getTrends()
+            tvMain.text = YoutubeDataApi.retrofitService.getTrends().items.joinToString(separator = "\n") { video ->
+                video.snippet.title
+            }
         }
     }
 }
