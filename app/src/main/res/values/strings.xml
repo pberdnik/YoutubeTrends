@@ -2,4 +2,6 @@
     <string name="app_name">Youtube Trends</string>
     <string name="preview_image_for_video">Preview image for video</string>
     <string name="video_details_delimiter">·</string>
+    <string name="video">Video</string>
+    <string name="channel_avatar">Channel avatar</string>
 </resources>
