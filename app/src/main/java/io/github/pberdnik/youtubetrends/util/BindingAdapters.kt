@@ -3,9 +3,12 @@ package io.github.pberdnik.youtubetrends.util
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import io.github.pberdnik.youtubetrends.R
+import io.github.pberdnik.youtubetrends.network.Video
+import io.github.pberdnik.youtubetrends.trends.TrendsAdapter
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String? = null) {
@@ -20,4 +23,10 @@ fun bindImage(imgView: ImageView, imgUrl: String? = null) {
             )
             .into(imgView)
     }
+}
+
+@BindingAdapter("listData")
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<Video>?) {
+    val adapter = recyclerView.adapter as TrendsAdapter
+    adapter.submitList(data)
 }

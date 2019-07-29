@@ -9,6 +9,6 @@
         android:id="@+id/videoDetails"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="io.github.pberdnik.youtubetrends.videodetails.VideoDetailsFragment"/>
+        android:name="io.github.pberdnik.youtubetrends.trends.TrendsFragment"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
