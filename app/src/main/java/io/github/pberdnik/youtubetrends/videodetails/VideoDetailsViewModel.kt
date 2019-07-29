@@ -15,14 +15,11 @@ class VideoDetailsViewModel : ViewModel() {
     private val _video = MutableLiveData<Video>()
     private val _channel = MutableLiveData<Channel>()
 
-    val videoThumbnailUrl: LiveData<String> = Transformations.map(_video) { it.snippet.thumbnails.best }
-    val videoTitle: LiveData<String> = Transformations.map(_video) { it.snippet.title }
-    val videoDescription: LiveData<String> = Transformations.map(_video) { it.snippet.description }
-    val videoViewCount: LiveData<String> = Transformations.map(_video) { it.statistics?.viewCount }
+    val video: LiveData<Video> = _video
+    val channel: LiveData<Channel> = _channel
 
-    val channelAvatarUrl: LiveData<String> = Transformations.map(_channel) { it.snippet.thumbnails.default?.url }
-    val channelTitle: LiveData<String> = Transformations.map(_channel) { it.snippet.title }
-    val channelSubscriberCount: LiveData<String> = Transformations.map(_channel) { it.statistics.subscriberCount }
+    val videoSubstituteImageUrl: LiveData<String> = Transformations.map(_video) { it.snippet.thumbnails.best }
+    val channelAvatarImageUrl: LiveData<String> = Transformations.map(_channel) { it.snippet.thumbnails.default?.url }
 
     init {
         downloadVideoInfo()
