@@ -1,8 +1,10 @@
 package io.github.pberdnik.youtubetrends.videodetails
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import io.github.pberdnik.youtubetrends.network.Channel
-import io.github.pberdnik.youtubetrends.network.Thumbnails
 import io.github.pberdnik.youtubetrends.network.Video
 import io.github.pberdnik.youtubetrends.network.YoutubeDataApi
 import kotlinx.coroutines.launch
@@ -18,9 +20,6 @@ class VideoDetailsViewModel : ViewModel() {
     val video: LiveData<Video> = _video
     val channel: LiveData<Channel> = _channel
 
-    val videoSubstituteImageUrl: LiveData<String> = Transformations.map(_video) { it.snippet.thumbnails.best }
-    val channelAvatarImageUrl: LiveData<String> = Transformations.map(_channel) { it.snippet.thumbnails.default?.url }
-
     init {
         downloadVideoInfo()
     }
@@ -34,8 +33,3 @@ class VideoDetailsViewModel : ViewModel() {
         }
     }
 }
-
-private val Thumbnails.best: String
-    get() {
-        return (maxres ?: standard ?: high ?: medium ?: default)!!.url
-    }

@@ -4,4 +4,6 @@
     <string name="video_details_delimiter">·</string>
     <string name="video">Video</string>
     <string name="channel_avatar">Channel avatar</string>
+    <string name="views">%s views</string>
+    <string name="subscribers">%s subscribers</string>
 </resources>

@@ -8,7 +8,7 @@ import com.bumptech.glide.request.RequestOptions
 import io.github.pberdnik.youtubetrends.R
 
 @BindingAdapter("imageUrl")
-fun bindImage(imgView: ImageView, imgUrl: String?) {
+fun bindImage(imgView: ImageView, imgUrl: String? = null) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
         Glide.with(imgView.context)

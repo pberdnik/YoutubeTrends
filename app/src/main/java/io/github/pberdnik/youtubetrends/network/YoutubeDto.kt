@@ -23,7 +23,9 @@ data class Thumbnails(
     val high: Thumbnail? = null,
     val standard: Thumbnail? = null,
     val maxres: Thumbnail? = null
-)
+) {
+    val best = (maxres ?: standard ?: high ?: medium ?: default)!!.url
+}
 
 data class Thumbnail(
     val url: String,
