@@ -6,23 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import io.github.pberdnik.youtubetrends.R
+import io.github.pberdnik.youtubetrends.databinding.VideoDetailsFragmentBinding
 
 class VideoDetailsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = VideoDetailsFragment()
-    }
-
-    private lateinit var viewModel: VideoDetailsViewModel
+    private val viewModel by lazy { ViewModelProviders.of(this).get(VideoDetailsViewModel::class.java) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.video_details_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(VideoDetailsViewModel::class.java)
+        val binding = VideoDetailsFragmentBinding.inflate(inflater)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
 }

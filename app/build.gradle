@@ -26,6 +26,9 @@ android {
     buildTypes.each {
         it.buildConfigField 'String', 'YouTubeApiKey', YouTube_Data_API_v3_ApiKey
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
