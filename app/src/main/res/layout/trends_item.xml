@@ -31,7 +31,7 @@
         tools:text="Rick and Morty: Morty's Mind Blowers - True Level" />
 
     <TextView
-        android:id="@+id/channelNameTV"
+        android:id="@+id/channelTitleTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -49,7 +49,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/video_details_delimiter"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/channelNameTV"
+        app:layout_constraintStart_toEndOf="@+id/channelTitleTV"
         app:layout_constraintTop_toBottomOf="@+id/videoNameTV" />
 
     <TextView

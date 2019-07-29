@@ -22,6 +22,18 @@ interface YoutubeDataApiService {
         @Query("maxResults") maxResults: Int = 25,
         @Query("regionCode") regionCode: String = "RU"
     ): Videos
+
+    @GET("videos")
+    suspend fun getVideo(
+        @Query("id") id: String,
+        @Query("part") part: String = "snippet,statistics"
+    ): Videos
+
+    @GET("channels")
+    suspend fun getChannel(
+        @Query("id") id: String,
+        @Query("part") part: String = "snippet,statistics"
+    ): Channels
 }
 
 object YoutubeDataApi {

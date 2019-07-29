@@ -41,6 +41,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:textSize="18sp"
+                android:text="@{viewModel.videoTitle}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/videoSubstituteIV"
@@ -59,23 +60,25 @@
                 tools:src="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/channelNameTV"
+                android:id="@+id/channelTitleTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:text="@{viewModel.channelTitle}"
                 app:layout_constraintStart_toEndOf="@+id/channelAvatarIV"
                 app:layout_constraintTop_toTopOf="@+id/channelAvatarIV"
                 tools:text="SolarJave" />
 
             <TextView
-                android:id="@+id/subscribersNumberTV"
+                android:id="@+id/subscribersCountTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:textSize="12sp"
+                android:text="@{viewModel.channelSubscriberCount}"
                 app:layout_constraintStart_toEndOf="@+id/channelAvatarIV"
-                app:layout_constraintTop_toBottomOf="@+id/channelNameTV"
+                app:layout_constraintTop_toBottomOf="@+id/channelTitleTV"
                 tools:text="1M subscribers" />
 
             <TextView
@@ -85,6 +88,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:text="@{viewModel.videoDescription}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/channelAvatarIV"
@@ -97,6 +101,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:textSize="12sp"
+                android:text="@{viewModel.videoViewCount}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/videoNameTV"
                 tools:text="1.1M views" />
