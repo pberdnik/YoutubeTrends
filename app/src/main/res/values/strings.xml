@@ -6,4 +6,6 @@
     <string name="channel_avatar">Channel avatar</string>
     <string name="views">%s views</string>
     <string name="subscribers">%s subscribers</string>
+    <string name="video_details">Video Details</string>
+    <string name="youtube_trends">Youtube Trends</string>
 </resources>

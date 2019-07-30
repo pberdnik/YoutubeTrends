@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/trendsFragment"
         android:name="io.github.pberdnik.youtubetrends.trends.TrendsFragment"
-        android:label="TrendsFragment"
+        android:label="@string/youtube_trends"
         tools:layout="@layout/trends_fragment">
         <action
             android:id="@+id/action_trendsFragment_to_videoDetailsFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/videoDetailsFragment"
         android:name="io.github.pberdnik.youtubetrends.videodetails.VideoDetailsFragment"
-        android:label="VideoDetailsFragment"
+        android:label="@string/video_details"
         tools:layout="@layout/video_details_fragment" />
 
 </navigation>
