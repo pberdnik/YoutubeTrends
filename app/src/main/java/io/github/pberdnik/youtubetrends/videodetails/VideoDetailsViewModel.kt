@@ -4,11 +4,11 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import io.github.pberdnik.youtubetrends.network.Channel
 import io.github.pberdnik.youtubetrends.network.Video
 import io.github.pberdnik.youtubetrends.network.YoutubeDataApi
-import kotlinx.coroutines.launch
+import io.github.pberdnik.youtubetrends.util.YouTubeApiStatus
+import io.github.pberdnik.youtubetrends.util.performLongOperation
 
 class VideoDetailsViewModel(private val videoInfo: VideoInfo, private val app: Application) : ViewModel() {
 
@@ -18,15 +18,17 @@ class VideoDetailsViewModel(private val videoInfo: VideoInfo, private val app: A
     val video: LiveData<Video> = _video
     val channel: LiveData<Channel> = _channel
 
+    val status = MutableLiveData<YouTubeApiStatus>()
+
     init {
         downloadVideoInfo()
     }
 
     private fun downloadVideoInfo() {
-        viewModelScope.launch {
+        performLongOperation(status) {
             _video.value = YoutubeDataApi.retrofitService.getVideo(videoInfo.videoId).items[0]
         }
-        viewModelScope.launch {
+        performLongOperation(status) {
             _channel.value = YoutubeDataApi.retrofitService.getChannel(videoInfo.channelId).items[0]
         }
     }

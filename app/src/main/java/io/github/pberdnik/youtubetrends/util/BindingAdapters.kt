@@ -1,5 +1,6 @@
 package io.github.pberdnik.youtubetrends.util
 
+import android.view.View
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
@@ -29,4 +30,21 @@ fun bindImage(imgView: ImageView, imgUrl: String? = null) {
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Video>?) {
     val adapter = recyclerView.adapter as TrendsAdapter
     adapter.submitList(data)
+}
+
+@BindingAdapter("youTubeApiStatus")
+fun bindStatus(statusImageView: ImageView, status: YouTubeApiStatus?) {
+    when (status) {
+        YouTubeApiStatus.LOADING -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.loading_animation)
+        }
+        YouTubeApiStatus.ERROR -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.ic_connection_error)
+        }
+        YouTubeApiStatus.DONE -> {
+            statusImageView.visibility = View.GONE
+        }
+    }
 }

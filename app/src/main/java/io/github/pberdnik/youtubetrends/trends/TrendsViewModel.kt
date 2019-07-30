@@ -3,11 +3,10 @@ package io.github.pberdnik.youtubetrends.trends
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import io.github.pberdnik.youtubetrends.network.Video
 import io.github.pberdnik.youtubetrends.network.YoutubeDataApi
-import kotlinx.coroutines.launch
-
+import io.github.pberdnik.youtubetrends.util.YouTubeApiStatus
+import io.github.pberdnik.youtubetrends.util.performLongOperation
 
 class TrendsViewModel : ViewModel() {
 
@@ -17,12 +16,14 @@ class TrendsViewModel : ViewModel() {
     private val _navigateToSelectedVideo = MutableLiveData<Video>()
     val navigateToSelectedVideo: LiveData<Video> = _navigateToSelectedVideo
 
+    val status = MutableLiveData<YouTubeApiStatus>()
+
     init {
         downloadTrends()
     }
 
     private fun downloadTrends() {
-        viewModelScope.launch {
+        performLongOperation(status) {
             _videos.value = YoutubeDataApi.retrofitService.getTrends().items
         }
     }
