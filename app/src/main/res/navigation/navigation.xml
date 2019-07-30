@@ -12,13 +12,17 @@
         tools:layout="@layout/trends_fragment">
         <action
             android:id="@+id/action_trendsFragment_to_videoDetailsFragment"
-            app:destination="@id/videoDetailsFragment" />
+            app:destination="@id/videoDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/videoDetailsFragment"
         android:name="io.github.pberdnik.youtubetrends.videodetails.VideoDetailsFragment"
         android:label="@string/video_details"
-        tools:layout="@layout/video_details_fragment" >
+        tools:layout="@layout/video_details_fragment">
         <argument
             android:name="videoId"
             app:argType="string" />
