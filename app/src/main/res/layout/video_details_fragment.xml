@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="io.github.pberdnik.youtubetrends.videodetails.VideoDetailsViewModel" />
@@ -52,8 +53,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:textSize="18sp"
                 android:text="@{viewModel.video.snippet.title}"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/videoSubstituteIV"
@@ -88,8 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:text="@{viewModel.channel.statistics.subscriberCount != null ? String.format(@string/subscribers, viewModel.channel.statistics.subscriberCount) : null}"
                 android:textSize="12sp"
-                android:text="@{String.format(@string/subscribers, viewModel.channel.statistics.subscriberCount)}"
                 app:layout_constraintStart_toEndOf="@+id/channelAvatarIV"
                 app:layout_constraintTop_toBottomOf="@+id/channelTitleTV"
                 tools:text="1M subscribers" />
@@ -113,8 +114,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:text="@{viewModel.video.statistics.viewCount != null ? String.format(@string/views, viewModel.video.statistics.viewCount) : null}"
                 android:textSize="12sp"
-                android:text="@{String.format(@string/views, viewModel.video.statistics.viewCount)}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/videoTitleTV"
                 tools:text="1.1M views" />
