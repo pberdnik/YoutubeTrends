@@ -8,15 +8,14 @@ import io.github.pberdnik.youtubetrends.network.Video
 import io.github.pberdnik.youtubetrends.network.YoutubeDataApi
 import kotlinx.coroutines.launch
 
-typealias VideoInfo = Pair<String, String> // videoId and channelId
 
 class TrendsViewModel : ViewModel() {
 
     private val _videos = MutableLiveData<List<Video>>()
     val videos: LiveData<List<Video>> = _videos
 
-    private val _navigateToSelectedVideo = MutableLiveData<VideoInfo>()
-    val navigateToSelectedVideo: LiveData<VideoInfo> = _navigateToSelectedVideo
+    private val _navigateToSelectedVideo = MutableLiveData<Video>()
+    val navigateToSelectedVideo: LiveData<Video> = _navigateToSelectedVideo
 
     init {
         downloadTrends()
@@ -28,8 +27,8 @@ class TrendsViewModel : ViewModel() {
         }
     }
 
-    fun displayVideoDetails() {
-        _navigateToSelectedVideo.value = "" to ""
+    fun displayVideoDetails(video: Video) {
+        _navigateToSelectedVideo.value = video
     }
 
     fun displayVideoDetailsComplete() {

@@ -26,12 +26,13 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/video"
                 app:imageUrl="@{viewModel.video.snippet.thumbnails.best}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/backgrounds/scenic" />
+                tools:src="@tools:sample/backgrounds/scenic[1]" />
 
             <TextView
                 android:id="@+id/videoTitleTV"

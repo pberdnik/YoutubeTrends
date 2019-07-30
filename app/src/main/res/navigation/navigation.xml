@@ -18,6 +18,13 @@
         android:id="@+id/videoDetailsFragment"
         android:name="io.github.pberdnik.youtubetrends.videodetails.VideoDetailsFragment"
         android:label="@string/video_details"
-        tools:layout="@layout/video_details_fragment" />
+        tools:layout="@layout/video_details_fragment" >
+        <argument
+            android:name="videoId"
+            app:argType="string" />
+        <argument
+            android:name="channelId"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

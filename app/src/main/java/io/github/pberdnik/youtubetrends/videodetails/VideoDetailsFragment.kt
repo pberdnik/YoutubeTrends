@@ -10,11 +10,13 @@ import io.github.pberdnik.youtubetrends.databinding.VideoDetailsFragmentBinding
 
 class VideoDetailsFragment : Fragment() {
 
-    private val viewModel by lazy { ViewModelProviders.of(this).get(VideoDetailsViewModel::class.java) }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val application = requireNotNull(activity).application
         val binding = VideoDetailsFragmentBinding.inflate(inflater)
-        binding.viewModel = viewModel
+        val args = VideoDetailsFragmentArgs.fromBundle(arguments!!)
+        val viewModelFactory = VideoDetailsViewModelFactory(VideoInfo(args.videoId, args.channelId), application)
+        binding.viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(VideoDetailsViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }

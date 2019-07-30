@@ -20,12 +20,13 @@ class TrendsFragment : Fragment() {
         val binding = TrendsFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-        binding.trendsList.adapter = TrendsAdapter(TrendsAdapter.OnClickListener {
-            viewModel.displayVideoDetails()
+        binding.trendsList.adapter = TrendsAdapter(TrendsAdapter.OnClickListener {video ->
+            viewModel.displayVideoDetails(video)
         })
-        viewModel.navigateToSelectedVideo.observe(this, Observer {
-            if ( null != it ) {
-                findNavController().navigate(TrendsFragmentDirections.actionTrendsFragmentToVideoDetailsFragment())
+        viewModel.navigateToSelectedVideo.observe(this, Observer {video ->
+            video?.let {
+                findNavController().navigate(TrendsFragmentDirections
+                    .actionTrendsFragmentToVideoDetailsFragment(video.id, video.snippet.channelId))
                 // Tell the ViewModel we've made the navigate call to prevent multiple navigation
                 viewModel.displayVideoDetailsComplete()
             }

@@ -1,5 +1,6 @@
 package io.github.pberdnik.youtubetrends.videodetails
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,10 +10,7 @@ import io.github.pberdnik.youtubetrends.network.Video
 import io.github.pberdnik.youtubetrends.network.YoutubeDataApi
 import kotlinx.coroutines.launch
 
-class VideoDetailsViewModel : ViewModel() {
-
-    private val videoId = "gn4li_PFNf4"
-    private val channelId = "UCX7g1iDFbAK_S_IPTuWzhOA"
+class VideoDetailsViewModel(private val videoInfo: VideoInfo, private val app: Application) : ViewModel() {
 
     private val _video = MutableLiveData<Video>()
     private val _channel = MutableLiveData<Channel>()
@@ -26,10 +24,10 @@ class VideoDetailsViewModel : ViewModel() {
 
     private fun downloadVideoInfo() {
         viewModelScope.launch {
-            _video.value = YoutubeDataApi.retrofitService.getVideo(videoId).items[0]
+            _video.value = YoutubeDataApi.retrofitService.getVideo(videoInfo.videoId).items[0]
         }
         viewModelScope.launch {
-            _channel.value = YoutubeDataApi.retrofitService.getChannel(channelId).items[0]
+            _channel.value = YoutubeDataApi.retrofitService.getChannel(videoInfo.channelId).items[0]
         }
     }
 }
