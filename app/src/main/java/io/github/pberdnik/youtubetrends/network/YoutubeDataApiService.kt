@@ -17,7 +17,7 @@ private const val BASE_URL = "https://www.googleapis.com/youtube/v3/"
 interface YoutubeDataApiService {
     @GET("videos")
     suspend fun getTrends(
-        @Query("part") part: String = "snippet",
+        @Query("part") part: String = "snippet,statistics",
         @Query("chart") chart: String = "mostPopular",
         @Query("maxResults") maxResults: Int = 25,
         @Query("regionCode") regionCode: String = "RU"

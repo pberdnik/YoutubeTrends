@@ -70,7 +70,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:textSize="12sp"
-            android:text="@{video.statistics.viewCount}"
+            android:text="@{String.format(@string/views, video.statistics.viewCount)}"
             app:layout_constraintStart_toEndOf="@+id/delimiter1TV"
             app:layout_constraintTop_toBottomOf="@+id/videoTitleTV"
             tools:text="1.1M views" />
