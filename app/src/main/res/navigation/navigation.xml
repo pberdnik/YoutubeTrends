@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/trendsFragment">
+
+    <fragment
+        android:id="@+id/trendsFragment"
+        android:name="io.github.pberdnik.youtubetrends.trends.TrendsFragment"
+        android:label="@string/youtube_trends"
+        tools:layout="@layout/trends_fragment">
+        <action
+            android:id="@+id/action_trendsFragment_to_videoDetailsFragment"
+            app:destination="@id/videoDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/videoDetailsFragment"
+        android:name="io.github.pberdnik.youtubetrends.videodetails.VideoDetailsFragment"
+        android:label="@string/video_details"
+        tools:layout="@layout/video_details_fragment">
+        <argument
+            android:name="videoId"
+            app:argType="string" />
+        <argument
+            android:name="channelId"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Youtube Trends</string>
+    <string name="preview_image_for_video">Preview image for video</string>
+    <string name="video_details_delimiter">·</string>
+    <string name="video">Video</string>
+    <string name="channel_avatar">Channel avatar</string>
+    <string name="views">%s views</string>
+    <string name="subscribers">%s subscribers</string>
+    <string name="video_details">Video Details</string>
+    <string name="youtube_trends">Youtube Trends</string>
+    <string name="no_internet">No internet</string>
 </resources>

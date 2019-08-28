@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="io.github.pberdnik.youtubetrends.videodetails.VideoDetailsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".videodetails.VideoDetailsFragment">
+
+            <ImageView
+                android:id="@+id/status_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/no_internet"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:youTubeApiStatus="@{viewModel.status}" />
+
+            <ImageView
+                android:id="@+id/videoSubstituteIV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/video"
+                app:imageUrl="@{viewModel.video.snippet.thumbnails.best}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic[1]" />
+
+            <TextView
+                android:id="@+id/videoTitleTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{viewModel.video.snippet.title}"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/videoSubstituteIV"
+                tools:text="Rick and Morty: Morty's Mind Blowers - True Level" />
+
+            <ImageView
+                android:id="@+id/channelAvatarIV"
+                android:layout_width="60dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/channel_avatar"
+                app:imageUrl="@{viewModel.channel.snippet.thumbnails.best}"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewCountTV"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/channelTitleTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{viewModel.channel.snippet.title}"
+                app:layout_constraintStart_toEndOf="@+id/channelAvatarIV"
+                app:layout_constraintTop_toTopOf="@+id/channelAvatarIV"
+                tools:text="SolarJave" />
+
+            <TextView
+                android:id="@+id/subscribersCountTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@{viewModel.channel.statistics.subscriberCount != null ? String.format(@string/subscribers, viewModel.channel.statistics.subscriberCount) : null}"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/channelAvatarIV"
+                app:layout_constraintTop_toBottomOf="@+id/channelTitleTV"
+                tools:text="1M subscribers" />
+
+            <TextView
+                android:id="@+id/videoDescriptionTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{viewModel.video.snippet.description}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/channelAvatarIV"
+                tools:text="Copyright Disclaimer Under Section 107 of the Copyright Act 1976, allowance is made for &quot;fair use&quot; for purposes such as criticism, comment, news reporting, teaching, scholarship, and research. Fair use is a use permitted by copyright statute that might otherwise be infringing. Non-profit, educational or personal use tips the balance in favor of fair use.  All rights belong to Adult Swim / Rick and Morty Creators.  Rick and Morty: S03E08 - Morty's Mind Blowers" />
+
+            <TextView
+                android:id="@+id/viewCountTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@{viewModel.video.statistics.viewCount != null ? String.format(@string/views, viewModel.video.statistics.viewCount) : null}"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/videoTitleTV"
+                tools:text="1.1M views" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="video"
+            type="io.github.pberdnik.youtubetrends.network.Video" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".trends.TrendsFragment">
+
+        <ImageView
+            android:id="@+id/videoPreviewImage"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/preview_image_for_video"
+            app:imageUrl="@{video.snippet.thumbnails.best}"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/videoTitleTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{video.snippet.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/videoPreviewImage"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Rick and Morty: Morty's Mind Blowers - True Level" />
+
+        <TextView
+            android:id="@+id/channelTitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:text="@{video.snippet.channelTitle}"
+            app:layout_constraintStart_toEndOf="@+id/videoPreviewImage"
+            app:layout_constraintTop_toBottomOf="@+id/videoTitleTV"
+            tools:text="SolarJave" />
+
+        <TextView
+            android:id="@+id/delimiter1TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/video_details_delimiter"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/channelTitleTV"
+            app:layout_constraintTop_toBottomOf="@+id/videoTitleTV" />
+
+        <TextView
+            android:id="@+id/viewCountTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:text="@{String.format(@string/views, video.statistics.viewCount)}"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/delimiter1TV"
+            app:layout_constraintTop_toBottomOf="@+id/videoTitleTV"
+            tools:text="1.1M views" />
+
+        <TextView
+            android:id="@+id/delimiter2TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/video_details_delimiter"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/viewCountTV"
+            app:layout_constraintTop_toBottomOf="@+id/videoTitleTV" />
+
+        <TextView
+            android:id="@+id/publicationDateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:text="@{video.snippet.publishedAt}"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/delimiter2TV"
+            app:layout_constraintTop_toBottomOf="@+id/videoTitleTV"
+            tools:text="1 year ago" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
